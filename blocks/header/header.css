@@ -1,0 +1,9 @@
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    min-height: 74px;
+    min-width: 880px;
+    padding-top: 45px;
+    border-bottom: 1px solid rgb(84, 84, 84, 0.7);
+}

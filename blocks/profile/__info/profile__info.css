@@ -1,0 +1,13 @@
+.profile__info {
+    display: grid;
+    grid-template-columns: 1fr 24px;
+    grid-template-areas: 
+    "profile__name profile__edit-button"
+    "profile__description .";
+    max-width: 336px;
+    margin-left: 30px;
+    column-gap: 18px;
+    row-gap: 16px;
+    align-items: end;
+    
+}

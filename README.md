@@ -12,6 +12,6 @@
 
 **[Ссылка на GitHub](https://github.com/RiconCla/mesto)**
 
-**[Ссылка на GitHubPages](https://riconcla.github.io/russian-travel/)**
+**[Ссылка на GitHubPages](https://riconcla.github.io/mesto/)**
 
 **Спасибо за внимание!**

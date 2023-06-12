@@ -1,5 +1,5 @@
 .cards__like {
-    background-image: url(./../../../image/likes/like.svg);
+    background-image: url(./../../../image/likes/like-disabled.svg);
     height: 19px;
     min-width: 22px;
     /* width: 100%; */

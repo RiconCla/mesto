@@ -10,11 +10,18 @@
     padding: 0;
     cursor: pointer;
     object-fit: contain;
-    box-sizing: border-box;
+
     background-position: center;
     transition: 0.2s ease-out;
 }
 
 .profile__edit-button:hover {
     opacity: .6;
+}
+
+@media screen and (max-width: 960px) {
+    .profile__edit-button {
+        width: 18px;
+        height: 18px;
+    }
 }

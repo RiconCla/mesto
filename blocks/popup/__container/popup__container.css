@@ -8,3 +8,9 @@
     border-radius: 10px;
     width: 430px;
 }
+
+@media screen and (max-width: 645px) {
+    .popup__container {
+        width: 282px;
+    }
+}

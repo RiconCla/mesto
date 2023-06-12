@@ -12,6 +12,7 @@
     padding: 0;
     margin: auto 0 auto auto;
     transition: 0.2s ease-out;
+    background-size: 16px;
 }
 
 .profile__add-button:hover {

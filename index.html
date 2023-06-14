@@ -10,12 +10,12 @@
 <body class="page">
     <div class="content">
         <header class="header">
-            <img src="./image/logo/logo.svg" alt="Лого" class="header__logo">
+            <img src="./images/logo/logo.svg" alt="Лого" class="header__logo">
         </header>
         <main class="main">
             <section class="profile">
                 <div class="profile__avatar">
-                    <img class="profile__photo" alt="Аватар" src="./image/avatar/avatar.jpg">
+                    <img class="profile__photo" alt="Аватар" src="./images/avatar/avatar.jpg">
                 </div>
                 <div class="profile__info">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -26,7 +26,7 @@
             </section>
            <section class="cards">
               <div class="cards__item">
-                <img class="cards__image" src="./image/cards/1.jpg" alt="Карачевск">
+                <img class="cards__image" src="./images/cards/1.jpg" alt="Карачевск">
                 <div class="cards__caption">
                     <h2 class="cards__name">Карачевск</h2>
                     <div class="cards__likes">
@@ -34,9 +34,8 @@
                     </div>
                 </div>
               </div> 
-
               <div class="cards__item">
-                <img class="cards__image" src="./image/cards/2.jpg" alt="Гора Эльбрус">
+                <img class="cards__image" src="./images/cards/2.jpg" alt="Гора Эльбрус">
                 <div class="cards__caption">
                     <h2 class="cards__name">Гора Эльбрус</h2>
                     <div class="cards__likes">
@@ -44,9 +43,8 @@
                     </div>
                 </div>
               </div> 
-
               <div class="cards__item">
-                <img class="cards__image" src="./image/cards/3.jpg" alt="Домбай">
+                <img class="cards__image" src="./images/cards/3.jpg" alt="Домбай">
                 <div class="cards__caption">
                     <h2 class="cards__name">Домбай</h2>
                     <div class="cards__likes">
@@ -54,9 +52,8 @@
                     </div>
                 </div>
               </div> 
-
               <div class="cards__item">
-                <img class="cards__image" src="./image/cards/4.jpg" alt="Мальдивы">
+                <img class="cards__image" src="./images/cards/4.jpg" alt="Мальдивы">
                 <div class="cards__caption">
                     <h2 class="cards__name">Острова Мальдивы</h2>
                     <div class="cards__likes">
@@ -64,9 +61,8 @@
                     </div>
                 </div>
               </div> 
-
               <div class="cards__item">
-                <img class="cards__image" src="./image/cards/5.jpg" alt="Канада">
+                <img class="cards__image" src="./images/cards/5.jpg" alt="Канада">
                 <div class="cards__caption">
                     <h2 class="cards__name">Канада</h2>
                     <div class="cards__likes">
@@ -74,9 +70,8 @@
                     </div>
                 </div>
               </div> 
-
               <div class="cards__item">
-                <img class="cards__image" src="./image/cards/6.jpg" alt="Турция">
+                <img class="cards__image" src="./images/cards/6.jpg" alt="Турция">
                 <div class="cards__caption">
                     <h2 class="cards__name">Турция</h2>
                     <div class="cards__likes">
@@ -84,25 +79,23 @@
                     </div>
                 </div>
               </div> 
-
             </section>
         </main>
-         
         <footer class="footer">
             <p class="footer__copyright">© 2023 Mesto Russia</p>
         </footer>
     </div>
     <div class="popup">
     <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" method="post" name="popup__edit-profile">
-            <h2 class="popup__title">Редактировать профиль</h2>
-                <input class="popup__input popup__profile-name" id="name" name="profileName" type="text" placeholder="Имя" value="Жак-Ив Кусто" required>
-                <input class="popup__input popup__profile-description" id="description" name="profileDescription" type="text" placeholder="Описание" value="Исследователь океана" required>
+            <input class="popup__input popup__input_edit-profile-name" id="name" name="profileName" type="text" placeholder="Имя" value="" required>
+            <input class="popup__input popup__input_edit-profile-description" id="description" name="profileDescription" type="text" placeholder="Описание" value="" required>
             <button class="popup__button-save" type="submit">Сохранить</button>
         </form>
         <button class="popup__button-close" type="button"></button>
     </div>
 </div>
-<script src="./pages/index.js"></script>
+<script src="./scripts/index.js"></script>
 </body>
 </html>

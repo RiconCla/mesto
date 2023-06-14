@@ -1,8 +1,8 @@
 // Находим кнопку редактирования профиля
 const editProfileButton  = document.querySelector('.profile__edit-button');
 
-// Находим кнопку сохранения информации в карточке редактирования профиля
-const saveProfileButton = document.querySelector('.popup__button-save');
+// // Находим кнопку сохранения информации в карточке редактирования профиля
+// const saveProfileButton = document.querySelector('.popup__button-save');
 
 // Находим попап в DOM
 const popupElement = document.querySelector('.popup');
@@ -14,8 +14,12 @@ const closePopupButton = document.querySelector('.popup__button-close');
 let formElement = document.querySelector('.popup__form');
 
 // Находим поля формы в DOM
-let nameInput = document.querySelector('.popup__profile-name');
-let descriptionInput = document.querySelector('.popup__profile-description');
+let nameInput = document.querySelector('.popup__input_edit-profile-name');
+let descriptionInput = document.querySelector('.popup__input_edit-profile-description');
+
+// Выбераем элементы, куда должны быть вставлены значения полей
+let profileName = document.querySelector('.profile__name');
+let profileDescription = document.querySelector('.profile__description'); 
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -23,16 +27,14 @@ function handleFormSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
     // Получаем значение полей jobInput и nameInput из свойства value
-    nameInput.value;
-    descriptionInput.value;
-
-    // Выбераем элементы, куда должны быть вставлены значения полей
-    let profleName = document.querySelector('.profile__name');
-    let profileDescription = document.querySelector('.profile__description'); 
+    //nameInput.value;
+    //descriptionInput.value;
 
     // Вставляем новые значения с помощью textContent
-    profleName.textContent = nameInput.value;
+    profileName.textContent = nameInput.value;
     profileDescription.textContent = descriptionInput.value;
+    // По клику на кнопку "сохранить", закрывает попап
+    closePopup();
 }
 
 // Прикрепляем обработчик к форме:

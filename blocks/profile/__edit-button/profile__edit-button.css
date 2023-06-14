@@ -1,11 +1,11 @@
 .profile__edit-button {
     grid-area: profile__edit-button;
-    background-image: url(../../../image/buttons/editButton.svg);
+    background-image: url(../../../images/buttons/editButton.svg);
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;
-    background-color: black;
-    border: 1px solid #FFFFFF;
+    background-color: transparent;
+    border: 1px solid #fff;
     margin-bottom: 8px;
     padding: 0;
     cursor: pointer;

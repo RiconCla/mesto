@@ -1,9 +1,6 @@
 // Находим кнопку редактирования профиля
 const editProfileButton  = document.querySelector('.profile__edit-button');
 
-// // Находим кнопку сохранения информации в карточке редактирования профиля
-// const saveProfileButton = document.querySelector('.popup__button-save');
-
 // Находим попап в DOM
 const popupElement = document.querySelector('.popup');
 
@@ -43,16 +40,16 @@ formElement.addEventListener('submit', handleFormSubmit);
 
 //Открываем попап
 function openPopup () {
-    popupElement.classList.toggle('popup_opened');
+    popupElement.classList.add('popup_opened');
 }
 //Закрываем попап
 function closePopup () {
     popupElement.classList.toggle('popup_opened');
+    console.log("close")
 }
 
 // По клику на кнопку "карандаш" в профиле, открывает попап
 editProfileButton.addEventListener('click', openPopup);
-// По клику на кнопку "сохранить", закрывает попап
-saveProfileButton.addEventListener('click',closePopup);
+
 // По клику на кнопку "крест" попапа, закрывает попап
 closePopupButton.addEventListener('click', closePopup);

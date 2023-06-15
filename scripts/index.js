@@ -23,7 +23,7 @@ let profileDescription = document.querySelector('.profile__description');
 function handleFormSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
-    // Получаем значение полей jobInput и nameInput из свойства value
+    // Получаем значение полей descriptionInput и nameInput из свойства value
     // Вставляем новые значения с помощью textContent
     profileName.textContent = nameInput.value;
     profileDescription.textContent = descriptionInput.value;

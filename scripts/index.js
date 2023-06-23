@@ -8,15 +8,44 @@ const popupElement = document.querySelector('.popup');
 const closePopupButton = document.querySelector('.popup__button-close');
 
 // Находим форму в DOM
-let formElement = document.querySelector('.popup__form');
+const formElement = document.querySelector('.popup__form');
 
 // Находим поля формы в DOM
-let nameInput = document.querySelector('.popup__input_edit_profile-name');
-let descriptionInput = document.querySelector('.popup__input_edit_profile-description');
+const nameInput = document.querySelector('.popup__input_edit_profile-name');
+const descriptionInput = document.querySelector('.popup__input_edit_profile-description');
 
 // Выбераем элементы, куда должны быть вставлены значения полей
-let profileName = document.querySelector('.profile__name');
-let profileDescription = document.querySelector('.profile__description'); 
+const profileName = document.querySelector('.profile__name');
+const profileDescription = document.querySelector('.profile__description'); 
+
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет

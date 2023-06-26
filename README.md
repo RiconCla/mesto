@@ -1,5 +1,5 @@
 # **Проект: Место**
-## _Проектная работа №4_ на курсе **Веб-разработчик** от [Яндекс Практикум](https://practicum.yandex.ru/).
+## _Проектная работа №5_ на курсе **Веб-разработчик** от [Яндекс Практикум](https://practicum.yandex.ru/).
 
 В рамках данной работы используется :
 1. HTML + CSS + Flexbox + Grid
@@ -9,7 +9,7 @@
 
 **Работа реализована по макету Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [Ссылки на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1) (https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?type=design&node-id=0-1&mode=design&t=miYR7kCR4cWeeiec-0)
 
 * [Ссылка на GitHub](https://github.com/RiconCla/mesto)
 

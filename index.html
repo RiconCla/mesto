@@ -24,68 +24,13 @@
                 </div>
                 <button class="profile__add-button" type="button"></button>
             </section>
-           <section class="cards">
-              <div class="cards__item">
-                <img class="cards__image" src="./images/cards/1.jpg" alt="Карачевск">
-                <div class="cards__caption">
-                    <h2 class="cards__name">Карачевск</h2>
-                    <div class="cards__likes">
-                        <button class="cards__like" type="button"></button>
-                    </div>
-                </div>
-              </div> 
-              <div class="cards__item">
-                <img class="cards__image" src="./images/cards/2.jpg" alt="Гора Эльбрус">
-                <div class="cards__caption">
-                    <h2 class="cards__name">Гора Эльбрус</h2>
-                    <div class="cards__likes">
-                        <button class="cards__like" type="button"></button>
-                    </div>
-                </div>
-              </div> 
-              <div class="cards__item">
-                <img class="cards__image" src="./images/cards/3.jpg" alt="Домбай">
-                <div class="cards__caption">
-                    <h2 class="cards__name">Домбай</h2>
-                    <div class="cards__likes">
-                        <button class="cards__like" type="button"></button>
-                    </div>
-                </div>
-              </div> 
-              <div class="cards__item">
-                <img class="cards__image" src="./images/cards/4.jpg" alt="Мальдивы">
-                <div class="cards__caption">
-                    <h2 class="cards__name">Острова Мальдивы</h2>
-                    <div class="cards__likes">
-                        <button class="cards__like" type="button"></button>
-                    </div>
-                </div>
-              </div> 
-              <div class="cards__item">
-                <img class="cards__image" src="./images/cards/5.jpg" alt="Канада">
-                <div class="cards__caption">
-                    <h2 class="cards__name">Канада</h2>
-                    <div class="cards__likes">
-                        <button class="cards__like" type="button"></button>
-                    </div>
-                </div>
-              </div> 
-              <div class="cards__item">
-                <img class="cards__image" src="./images/cards/6.jpg" alt="Турция">
-                <div class="cards__caption">
-                    <h2 class="cards__name">Турция</h2>
-                    <div class="cards__likes">
-                        <button class="cards__like" type="button"></button>
-                    </div>
-                </div>
-              </div> 
-            </section>
+           <section class="cards"></section>
         </main>
         <footer class="footer">
             <p class="footer__copyright">© 2023 Mesto Russia</p>
         </footer>
     </div>
-    <div class="popup">
+    <div class="popup popup__form_edit">
     <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" method="post" name="popup__edit-profile">
@@ -96,6 +41,37 @@
         <button class="popup__button-close" type="button"></button>
     </div>
 </div>
+<div class="popup popup__form_add-img">
+    <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form" method="post" name="popup__add-mesto">
+            <input class="popup__input popup__input_add_mesto-name" id="name" name="mestoName" type="text" placeholder="Название" value="" required>
+            <input class="popup__input popup__input_add_mesto-url" id="url" name="mestoDescription" type="text" placeholder="Ссылка на картинку" value="" required>
+            <button class="popup__button-save" type="submit">Создать</button>
+        </form>
+        <button class="popup__button-close" type="button"></button>
+    </div>
+</div>
+<div class="popup popup__display-image">
+    <div class="popup__content">
+        <img class="popup__image" src = "" alt="">
+        <h2 class="popup__description"></h2>
+        <button class="popup__button-close" type="button"></button>
+    </div>
+</div>
+<template id="element-template">
+    <div class="cards__item">
+        <button class="cards__button-trash" type="button" title="Удалить"></button>
+        <img class="cards__image" src="./images/cards/6.jpg" alt="Турция">
+        <div class="cards__caption">
+            <h2 class="cards__name">Турция</h2>
+            <div class="cards__likes">
+                <button class="cards__like" type="button"></button>
+            </div>
+        </div>
+    </div>
+</template>
+<script src="./scripts/constans.js"></script>
 <script src="./scripts/index.js"></script>
 </body>
 </html>

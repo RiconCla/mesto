@@ -1,7 +1,7 @@
 // Находим попапы в DOM
-const popupElement = document.querySelectorAll('.popup');// Находим попапs в DOM
-const editProfile = document.querySelector('.popup_type_form-edit');//Находи попап редактирования профиля
-const editMesto = document.querySelector('.popup_type_form-add-img');//Находи попап добавления места
+const popupElements = document.querySelectorAll('.popup');// Находим попапs в DOM
+const popupEditProfile = document.querySelector('.popup_type_form-edit');//Находи попап редактирования профиля
+const popupEditMesto = document.querySelector('.popup_type_form-add-img');//Находи попап добавления места
 const cardPopupImage = document.querySelector('.popup_type_display-image');//Находи попап открытия карточки
 const modalImage = cardPopupImage.querySelector('.popup__image'); //Находи попап открытия карточки места
 
@@ -12,25 +12,23 @@ const profileDescription = profile.querySelector('.profile__description'); // В
 const editProfileButton  = profile.querySelector('.profile__edit-button');// Находим кнопку редактирования профиля
 
 //Профиль (форма)
-const formProfileEdit = editProfile.querySelector('.popup__form'); //Находим элемент формы профиля
+const formProfileEdit = popupEditProfile.querySelector('.popup__form'); //Находим элемент формы профиля
 const nameInput = formProfileEdit.querySelector('.popup__input_edit_profile-name');// Находим поля формы в DOM
 const descriptionInput = formProfileEdit.querySelector('.popup__input_edit_profile-description');// Находим поля формы в DOM
 
 // Профиль (загрузка карточек через js)
 const cardTemplate = document.querySelector('#element-template').content; //Находим темплейт элемент карточек мест в DOM и получаем доступ к его содержимому
-const cards = document.querySelector('.cards');// Записываем содержимое в переменную
+const card = document.querySelector('.cards');// Записываем содержимое в переменную
 
 //Добавление места
-const formAddMesto = editMesto.querySelector('.popup__form'); //Находим элемент формы места
-const cardNameInput = editMesto.querySelector('.popup__input_add_mesto-name'); // Находим поля формы в DOM
-const cardUrlInput = editMesto.querySelector('.popup__input_add_mesto-url');// Находим поля формы в DOM
+const formAddMesto = popupEditMesto.querySelector('.popup__form'); //Находим элемент формы места
+const cardNameInput = popupEditMesto.querySelector('.popup__input_add_mesto-name'); // Находим поля формы в DOM
+const cardUrlInput = popupEditMesto.querySelector('.popup__input_add_mesto-url');// Находим поля формы в DOM
 const buttonAddNewMesto = profile.querySelector('.profile__add-button');//Находим кнопку добавления места
-const cardImage = editMesto.querySelector('.cards__image');//Находим селектор с картинкой места
-const cardName = editMesto.querySelector('.cards__name');//Находим селектор с названием места
 
 //Кнопки закрытия попапов
-const closeProfileButton = editProfile.querySelector('.popup__button-close');// Находим кнопку закрытия карточки редактирования профиля
-const closeMestoButton = editMesto.querySelector('.popup__button-close');// Находим кнопку закрытия карточки редактирования места
+const closeProfileButton = popupEditProfile.querySelector('.popup__button-close');// Находим кнопку закрытия карточки редактирования профиля
+const closeMestoButton = popupEditMesto.querySelector('.popup__button-close');// Находим кнопку закрытия карточки редактирования места
 
 //Попап открытой карточки места
 const modalTitle = cardPopupImage.querySelector('.popup__description'); //Находим в попапе селектор с названием места
@@ -69,7 +67,7 @@ function createCards({name, link}) { //Диструктуризация вход
 
 //Добавляем на страницу готовую карточку
 function renderCard(item) { 
-  cards.prepend(createCards(item)); //Вставляем карточку в начало списка
+  card.prepend(createCards(item)); //Вставляем карточку в начало списка
 }
 
 //Считываем элементы из исходного массива initialCards
@@ -86,31 +84,23 @@ function addNewMesto (evt) {
   newMesto.name = cardNameInput.value; // Заносим имя места
   newMesto.link = cardUrlInput.value; // Заносим ссылку на изображение
   renderCard(newMesto); // Добавляем карточку места на страницу
-  closePopup(editMesto); // По клику на кнопку "сохранить", закрывает попап
+  closePopup(popupEditMesto); // По клику на кнопку "сохранить", закрывает попап
 }
 
 // Функция редактирования профиля (имя, описание)
-function handleFormSubmit (evt) {
+function handlerEditProfile (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Получаем значение полей descriptionInput и nameInput из свойства value
   // Вставляем новые значения с помощью textContent
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
-    closePopup(editProfile);// По клику на кнопку "сохранить", закрывает попап
+    closePopup(popupEditProfile);// По клику на кнопку "сохранить", закрывает попап
 }
 
-//Открываем попап. Проверям что передано в качестве аргументов и заполняем инпуты
+//Открываем попап
 function openPopup (e) {
     e.classList.add('popup_opened');
-    if (e === editProfile) { //Если профиль, то заносим значения из профиля в инпуты
-      nameInput.value = profileName.textContent;
-      descriptionInput.value = profileDescription.textContent;
-    }
-    else if (e === editMesto) { //Если редактируем место, обнуляем инпуты
-      cardNameInput.value = "";
-      cardUrlInput.value = "";
-    }
-} // Иначе, ничего не делаем
+} 
 
 //Закрываем попап
 function closePopup (e) {
@@ -119,14 +109,22 @@ function closePopup (e) {
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formProfileEdit.addEventListener('submit', handleFormSubmit); 
-
-formAddMesto.addEventListener('submit', addNewMesto); // Прикрепляем обработчик к форме
+formProfileEdit.addEventListener('submit', handlerEditProfile); // Обработчик формы редактирования профиля
+formAddMesto.addEventListener('submit', addNewMesto); // Прикрепляем обработчик к форме добавления места
 
 readCardsFromArray(initialCards); //Считываем карточки мест из массива initialCards
 
-buttonAddNewMesto.addEventListener('click', () => openPopup(editMesto)); //По клику на кнопку "+" в профиле, открывает попап добавления места
-editProfileButton.addEventListener('click', () => openPopup(editProfile));// По клику на кнопку "карандаш" в профиле, открывает попап
-closeProfileButton.addEventListener('click', () => closePopup(editProfile));// По клику на кнопку "крест" попапа, закрывает попап редактирования профиля
-closeMestoButton.addEventListener('click', () => closePopup(editMesto));// По клику на кнопку "крест" попапа, закрывает попап создания места
+buttonAddNewMesto.addEventListener('click', () => {
+  formAddMesto.reset(); // При открытии сбрасываем инпуты у формы добавления места
+  openPopup(popupEditMesto); //По клику на кнопку "+" в профиле, открывает попап добавления места
+});
+  
+editProfileButton.addEventListener('click', () => { 
+  nameInput.value = profileName.textContent; // Заносим в инпуты значения из профиля
+  descriptionInput.value = profileDescription.textContent; // Заносим в инпуты значения из профиля
+  openPopup(popupEditProfile);// По клику на кнопку "карандаш" в профиле, открывает попап
+});
+
+closeProfileButton.addEventListener('click', () => closePopup(popupEditProfile));// По клику на кнопку "крест" попапа, закрывает попап редактирования профиля
+closeMestoButton.addEventListener('click', () => closePopup(popupEditMesto));// По клику на кнопку "крест" попапа, закрывает попап создания места
 closeModalImage.addEventListener('click', () => closePopup(cardPopupImage));// По клику на кнопку "крест" попапа, закрывает попап с карточкой места

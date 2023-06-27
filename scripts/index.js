@@ -1,7 +1,7 @@
 // Находим попапы в DOM
 const popupElement = document.querySelectorAll('.popup');// Находим попапs в DOM
-const editProfile = document.querySelector('.popup_type_form_edit');//Находи попап редактирования профиля
-const editMesto = document.querySelector('.popup_type_form_add-img');//Находи попап добавления места
+const editProfile = document.querySelector('.popup_type_form-edit');//Находи попап редактирования профиля
+const editMesto = document.querySelector('.popup_type_form-add-img');//Находи попап добавления места
 const cardPopupImage = document.querySelector('.popup_type_display-image');//Находи попап открытия карточки
 const modalImage = cardPopupImage.querySelector('.popup__image'); //Находи попап открытия карточки места
 

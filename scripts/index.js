@@ -1,4 +1,4 @@
- // Находим попапы в DOM
+ // Находим попапы в DOM//
 const popupElement = document.querySelectorAll('.popup');// Находим попапs в DOM
 const editProfile = document.querySelector('.popup__form_edit');//Находи попап редактирования профиля
 const editMesto = document.querySelector('.popup__form_add-img');//Находи попап добавления места

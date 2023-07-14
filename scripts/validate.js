@@ -1,6 +1,6 @@
 // Функция, которая добавляет класс с ошибкой
 const showInputError = (formElement, inputElement, errorMessage, cfg) => {
-    const formError = formElement.querySelector(`.${formInput.id}-error`); 
+    const formError = formElement.querySelector(`.${inputElement.id}-error`); 
     inputElement.classList.add(cfg.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(cfg.errorClass);

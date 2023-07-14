@@ -33,9 +33,11 @@
     <div class="popup popup_type_form-edit">
     <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" method="post" name="popup__edit-profile">
-            <input class="popup__input popup__input_edit_profile-name" id="name" name="profileName" type="text" placeholder="Имя" value="" required>
-            <input class="popup__input popup__input_edit_profile-description" id="description" name="profileDescription" type="text" placeholder="Описание" value="" required>
+        <form class="popup__form" action="#" method="post" name="popup__edit-profile" novalidate>
+            <input class="popup__text-input popup__text-input_edit_profile-name" id="name" name="profileName" type="text" placeholder="Имя" value="" minlength="2" maxlength="40" required>
+            <span class="popup__input-error name-error"></span>
+            <input class="popup__text-input popup__text-input_edit_profile-description" id="description" name="profileDescription" type="text" placeholder="Описание" value="" minlength="2" maxlength="200" required>
+            <span class="popup__input-error description-error"></span>
             <button class="popup__button-save" type="submit">Сохранить</button>
         </form>
         <button class="popup__button-close" type="button"></button>
@@ -44,9 +46,11 @@
 <div class="popup popup_type_form-add-img">
     <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form" method="post" name="popup__add-mesto">
-            <input class="popup__input popup__input_add_mesto-name" id="name_mesto" name="mestoName" type="text" placeholder="Название" value="" required>
-            <input class="popup__input popup__input_add_mesto-url" id="url" name="mestoDescription" type="text" placeholder="Ссылка на картинку" value="" required>
+        <form class="popup__form" action="#" method="post" name="popup__add-mesto" novalidate>
+            <input class="popup__text-input popup__text-input_add_mesto-name" id="name-mesto" name="mestoName" type="text" placeholder="Название" value="" minlength="2" maxlength="30" required>
+            <span class="popup__input-error name-mesto-error"></span>
+            <input class="popup__text-input popup__text-input_add_mesto-url" id="url" name="mestoDescription" type="url" placeholder="Ссылка на картинку" value="" required>
+            <span class="popup__input-error url-error"></span>
             <button class="popup__button-save" type="submit">Создать</button>
         </form>
         <button class="popup__button-close" type="button"></button>
@@ -72,6 +76,7 @@
     </div>
 </template>
 <script src="./scripts/constans.js"></script>
+<script src="./scripts/validate.js"></script>
 <script src="./scripts/index.js"></script>
 </body>
 </html>

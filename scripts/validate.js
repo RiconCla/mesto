@@ -11,7 +11,7 @@ const showInputError = (formElement, inputElement, errorMessage, cfg) => {
     const formErrorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(cfg.inputErrorClass);
     formErrorElement.classList.remove(cfg.errorClass);
-    formErrorElement.value.reset();
+    formErrorElement.textContent = '';
   };
   
   //Функция, которая отображает сообщения об ошибках ввода

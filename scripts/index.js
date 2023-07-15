@@ -103,6 +103,14 @@ function handlerEditProfile (evt) {
     closePopup(popupEditProfile);// По клику на кнопку "сохранить", закрывает попап
 }
 
+//Функция, нахождения ошибок в инпутах, с помощью её вызываем функцию сброса ошибок
+function resetInputError(input) {
+  const inputList = input.querySelectorAll('.popup__text-input');
+  inputList.forEach(inputElement => {
+    hideInputError(input, inputElement, VALIDATION_CONFIG);
+  });
+}
+
 //Открываем попап
 function openPopup (e) {
     e.classList.add('popup_opened');

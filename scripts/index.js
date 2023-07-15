@@ -119,6 +119,7 @@ function openPopup (e) {
 //Закрываем попап
 function closePopup (e) {
     e.classList.remove('popup_opened');
+    resetInputError(e);
 }
 
 // Прикрепляем обработчик к форме:

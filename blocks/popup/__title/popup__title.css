@@ -8,7 +8,7 @@
     margin: 34px 0 54px;
     min-width: 330px;
     align-self: start;
-    margin-left: 36px;
+    margin-left: 36px; 
 }
 
 @media screen and (max-width: 645px) {

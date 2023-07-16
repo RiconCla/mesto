@@ -13,8 +13,9 @@ const editProfileButton  = profile.querySelector('.profile__edit-button');// Н�
 
 //Профиль (форма)
 const formProfileEdit = popupEditProfile.querySelector('.popup__form'); //Находим элемент формы профиля
-const nameInput = formProfileEdit.querySelector('.popup__input_edit_profile-name');// Находим поля формы в DOM
-const descriptionInput = formProfileEdit.querySelector('.popup__input_edit_profile-description');// Находим поля формы в DOM
+const nameInput = formProfileEdit.querySelector('.popup__text-input_edit_profile-name');// Находим поля формы в DOM
+const descriptionInput = formProfileEdit.querySelector('.popup__text-input_edit_profile-description');// Находим поля формы в DOM
+const formProfileSubmitButton = popupEditProfile.querySelector('.popup__button-save');//Находим кнопку отправки формы профиля
 
 // Профиль (загрузка карточек через js)
 const cardTemplate = document.querySelector('#element-template').content; //Находим темплейт элемент карточек мест в DOM и получаем доступ к его содержимому
@@ -22,9 +23,10 @@ const card = document.querySelector('.cards');// Записываем содер
 
 //Добавление места
 const formAddMesto = popupEditMesto.querySelector('.popup__form'); //Находим элемент формы места
-const cardNameInput = popupEditMesto.querySelector('.popup__input_add_mesto-name'); // Находим поля формы в DOM
-const cardUrlInput = popupEditMesto.querySelector('.popup__input_add_mesto-url');// Находим поля формы в DOM
+const cardNameInput = popupEditMesto.querySelector('.popup__text-input_add_mesto-name'); // Находим поля формы в DOM
+const cardUrlInput = popupEditMesto.querySelector('.popup__text-input_add_mesto-url');// Находим поля формы в DOM
 const buttonAddNewMesto = profile.querySelector('.profile__add-button');//Находим кнопку добавления места
+const formAddMestoSubmitButton = popupEditMesto.querySelector('.popup__button-save');//Находим кнопку отправки формы Места
 
 //Кнопки закрытия попапов
 const closeProfileButton = popupEditProfile.querySelector('.popup__button-close');// Находим кнопку закрытия карточки редактирования профиля
@@ -33,6 +35,9 @@ const closeMestoButton = popupEditMesto.querySelector('.popup__button-close');//
 //Попап открытой карточки места
 const modalTitle = cardPopupImage.querySelector('.popup__description'); //Находим в попапе селектор с названием места
 const closeModalImage = cardPopupImage.querySelector('.popup__button-close'); //Находим кнопку закрытия попа места
+
+//
+
 
 //Функция создания карточек
 function createCards({name, link}) { //Диструктуризация входного массива
@@ -94,17 +99,46 @@ function handlerEditProfile (evt) {
   // Вставляем новые значения с помощью textContent
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
+  disableButton(formProfileSubmitButton, VALIDATION_CONFIG);
     closePopup(popupEditProfile);// По клику на кнопку "сохранить", закрывает попап
+}
+
+//Функция, нахождения ошибок в инпутах, с помощью её вызываем функцию сброса ошибок
+function resetInputError(input) {
+  const inputList = input.querySelectorAll('.popup__text-input');
+  inputList.forEach(inputElement => {
+    hideInputError(input, inputElement, VALIDATION_CONFIG);
+  });
 }
 
 //Открываем попап
 function openPopup (e) {
     e.classList.add('popup_opened');
+    document.addEventListener('keydown', checkPressFromKeyboard);//Создаем слушатель при открытии попапа, которвц отслеживает нажатие на клавиатуре
 } 
+
+//Функция проверки какая кнопка нажата на клавиатуре
+function checkPressFromKeyboard (evt) {
+  if (evt.key === "Escape") {
+    const popupElement = Array.from(popupElements).find(item => item.classList.contains('popup_opened')); //ищем все элементы у которых есть класс открытого попапа
+    // console.log(popupElement);
+    closePopup(popupElement);
+  }
+}
+
+//Функция, проверки клика на оверлей (вне попапов)
+function checkClickOnOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+    // console.log("proverka");
+  }
+}
 
 //Закрываем попап
 function closePopup (e) {
     e.classList.remove('popup_opened');
+    resetInputError(e);//Очищаем ошибки при закрытии попапов
+    document.removeEventListener('keydown', checkPressFromKeyboard);//После закрытия убираем слушатель с клавиатуры
 }
 
 // Прикрепляем обработчик к форме:
@@ -116,6 +150,7 @@ readCardsFromArray(initialCards); //Считываем карточки мест
 
 buttonAddNewMesto.addEventListener('click', () => {
   formAddMesto.reset(); // При открытии сбрасываем инпуты у формы добавления места
+  disableButton(formAddMestoSubmitButton, VALIDATION_CONFIG);
   openPopup(popupEditMesto); //По клику на кнопку "+" в профиле, открывает попап добавления места
 });
   
@@ -128,3 +163,8 @@ editProfileButton.addEventListener('click', () => {
 closeProfileButton.addEventListener('click', () => closePopup(popupEditProfile));// По клику на кнопку "крест" попапа, закрывает попап редактирования профиля
 closeMestoButton.addEventListener('click', () => closePopup(popupEditMesto));// По клику на кнопку "крест" попапа, закрывает попап создания места
 closeModalImage.addEventListener('click', () => closePopup(cardPopupImage));// По клику на кнопку "крест" попапа, закрывает попап с карточкой места
+
+//Вешаем слушатели на попапы
+popupEditProfile.addEventListener('mousedown',checkClickOnOverlay);
+popupEditMesto.addEventListener('mousedown', checkClickOnOverlay);
+cardPopupImage.addEventListener('mousedown', checkClickOnOverlay);

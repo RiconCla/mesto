@@ -33,13 +33,13 @@ const showInputError = (formElement, inputElement, errorMessage, cfg) => {
   //Функция, включения кнопки "сохранить"
   const disableButton = (button, cfg) => {
     button.classList.add(cfg.inactiveButtonClass); 
-    button.disabled = true;
+    button.disabled = true;//Задаем булево значения для понимания статуса
   };
 
 //Функция, отключения кнопки "сохранить"
 const enableButton = (button, cfg) => {
     button.classList.remove(cfg.inactiveButtonClass); 
-    button.disabled = false;
+    button.disabled = false;//Задаем булево значения для понимания статуса
   };
 
 //Функция, переключения кнопки "сохранить" в зависомости от валидности полей ввода

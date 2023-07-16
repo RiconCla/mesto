@@ -114,12 +114,31 @@ function resetInputError(input) {
 //Открываем попап
 function openPopup (e) {
     e.classList.add('popup_opened');
+    document.addEventListener('keydown', checkPressFromKeyboard);//Создаем слушатель при открытии попапа, которвц отслеживает нажатие на клавиатуре
 } 
+
+//Функция проверки какая кнопка нажата на клавиатуре
+function checkPressFromKeyboard (evt) {
+  if (evt.key === "Escape") {
+    const popupElement = Array.from(popupElements).find(item => item.classList.contains('popup_opened')); //ищем все элементы у которых есть класс открытого попапа
+    // console.log(popupElement);
+    closePopup(popupElement);
+  }
+}
+
+//Функция, проверки клика на оверлей (вне попапов)
+function checkClickOnOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+    // console.log("proverka");
+  }
+}
 
 //Закрываем попап
 function closePopup (e) {
     e.classList.remove('popup_opened');
-    resetInputError(e);
+    resetInputError(e);//Очищаем ошибки при закрытии попапов
+    document.removeEventListener('keydown', checkPressFromKeyboard);//После закрытия убираем слушатель с клавиатуры
 }
 
 // Прикрепляем обработчик к форме:
@@ -144,3 +163,8 @@ editProfileButton.addEventListener('click', () => {
 closeProfileButton.addEventListener('click', () => closePopup(popupEditProfile));// По клику на кнопку "крест" попапа, закрывает попап редактирования профиля
 closeMestoButton.addEventListener('click', () => closePopup(popupEditMesto));// По клику на кнопку "крест" попапа, закрывает попап создания места
 closeModalImage.addEventListener('click', () => closePopup(cardPopupImage));// По клику на кнопку "крест" попапа, закрывает попап с карточкой места
+
+//Вешаем слушатели на попапы
+popupEditProfile.addEventListener('mousedown',checkClickOnOverlay);
+popupEditMesto.addEventListener('mousedown', checkClickOnOverlay);
+cardPopupImage.addEventListener('mousedown', checkClickOnOverlay);

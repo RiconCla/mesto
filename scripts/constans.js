@@ -29,7 +29,7 @@ const initialCards = [
     formSelector: '.popup__form',
     inputSelector: '.popup__text-input',
     submitButtonSelector: '.popup__button-save',
-    inactiveButtonClass: 'popup__button-save_dasabled',
+    inactiveButtonClass: 'popup__button-save_disabled',
     inputErrorClass: 'popup__text-input_type_error',
     errorClass: 'popup__input-error_visible'
-  }
+  };

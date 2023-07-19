@@ -36,7 +36,6 @@ const closeButtons = document.querySelectorAll('.popup__button-close');
 
 //Попап открытой карточки места
 const modalTitle = cardPopupImage.querySelector('.popup__description'); //Находим в попапе селектор с названием места
-const closeModalImage = cardPopupImage.querySelector('.popup__button-close'); //Находим кнопку закрытия попа места
 
 //Функция создания карточек
 function createCards({name, link}) { //Диструктуризация входного массива
@@ -108,12 +107,12 @@ function resetInputError(input) {
   inputList.forEach(inputElement => {
     hideInputError(input, inputElement, VALIDATION_CONFIG);
   });
-}
+};
 
 //Открываем попап
 function openPopup (evt) {
-    evt.classList.add('popup_opened');
-    document.addEventListener('keydown', checkPressFromKeyboard);//Создаем слушатель при открытии попапа, которвц отслеживает нажатие на клавиатуре
+  evt.classList.add('popup_opened');
+  document.addEventListener('keydown', checkPressFromKeyboard);//Создаем слушатель при открытии попапа, которвц отслеживает нажатие на клавиатуре
 };
 
 //Функция проверки какая кнопка нажата на клавиатуре
@@ -133,18 +132,23 @@ function checkClickOnOverlay(evt) {
 
 //Закрываем попап
 function closePopup (evt) {
-    evt.classList.remove('popup_opened');
-    resetInputError(evt);//Очищаем ошибки при закрытии попапов
-    disableButton(formProfileSubmitButton, VALIDATION_CONFIG);//
-    document.removeEventListener('keydown', checkPressFromKeyboard);//После закрытия убираем слушатель с клавиатуры
+  evt.classList.remove('popup_opened');
+  resetInputError(evt);//Очищаем ошибки при закрытии попапов
+  document.removeEventListener('keydown', checkPressFromKeyboard);//После закрытия убираем слушатель с клавиатуры
 };
+
+//Функция создания слушателей для кнопок закрытия попапов
+closeButtons.forEach((button) => {
+  // находим ближайшие к "крестику" попапы
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formProfileEdit.addEventListener('submit', handlerEditProfile); // Обработчик формы редактирования профиля
 formAddMesto.addEventListener('submit', addNewMesto); // Прикрепляем обработчик к форме добавления места
-
-initCardsFromArray(initialCards); //Считываем карточки мест из массива initialCards
 
 buttonAddNewMesto.addEventListener('click', () => {
   formAddMesto.reset(); // При открытии сбрасываем инпуты у формы добавления места
@@ -155,18 +159,14 @@ buttonAddNewMesto.addEventListener('click', () => {
 editProfileButton.addEventListener('click', () => { 
   nameInput.value = profileName.textContent; // Заносим в инпуты значения из профиля
   descriptionInput.value = profileDescription.textContent; // Заносим в инпуты значения из профиля
+  disableButton(formProfileSubmitButton, VALIDATION_CONFIG);
   openPopup(popupEditProfile);// По клику на кнопку "карандаш" в профиле, открывает попап
 });
-
-//Функция создания слушателей для кнопок закрытия попапов
-  closeButtons.forEach((button) => {
-  // находим ближайшие к "крестику" попапы
-  const popup = button.closest('.popup');
-  // устанавливаем обработчик закрытия на крестик
-  button.addEventListener('click', () => closePopup(popup));
-  });
 
 //Вешаем слушатели на попапы
 popupEditProfile.addEventListener('mousedown',checkClickOnOverlay);
 popupEditMesto.addEventListener('mousedown', checkClickOnOverlay);
 cardPopupImage.addEventListener('mousedown', checkClickOnOverlay);
+
+//Считываем карточки мест из массива initialCards
+initCardsFromArray(initialCards);

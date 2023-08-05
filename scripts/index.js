@@ -8,6 +8,7 @@ const popupEditMesto = document.querySelector('.popup_type_form-add-img');//На
 const cardPopupImage = document.querySelector('.popup_type_display-image');//Находи попап открытия карточки
 const modalImage = cardPopupImage.querySelector('.popup__image'); //Находи попап открытия карточки места
 
+
 // Профиль (Редактирование имени и описания)
 const profile = document.querySelector('.profile'); //Находим элемент профиля
 const profileName = profile.querySelector('.profile__name');// Выбераем элементы, куда должны быть вставлены значения полей
